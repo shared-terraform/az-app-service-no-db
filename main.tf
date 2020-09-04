@@ -12,8 +12,8 @@ resource "azurerm_resource_group" "rg" {
   name = <<-EOT
     rg-
     ${var.az_app_name}-
-    ${var.az_deploy_env}
-    ${terraform.workspace == "default" ? "" : "-${terraform.workspace}"}-
+    ${var.az_deploy_env}-
+    %{ if terraform.workspace != "default" }${terraform.workspace}-%{endif}
     ${random_uuid.uuid.result}
     EOT
   
