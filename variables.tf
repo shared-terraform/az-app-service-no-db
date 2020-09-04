@@ -19,3 +19,8 @@ variable "az_deploy_env" {
   description = "The deployment type for the resources being deployed (usually dev, test, or prod)."
   default = "dev"
 }
+
+variable "az_tags" {
+  type = map(string)
+  description = "Tags which are applied to all resources created using this module."
+}
